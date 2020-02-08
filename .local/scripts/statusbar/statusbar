@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [ $(pgrep -cx statusbar) -gt 1 ] ; then
+    printf "%s\n" "The statusbar is already running." >&2
+    exit 1
+fi
+
+. panel_config
+
+sys_fifo="/tmp/sys_fifo"
+bspwm_fifo=`bspc subscribe -f`
+xtitle -sf "T^bg($PANEL_COLOR)^fg($PANEL_BG)%s\n" > "$bspwm_fifo" &
+
+[ -e $sys_fifo ] && rm $sys_fifo
+mkfifo $sys_fifo
+
+status > $sys_fifo &
+
+DZEN_RIGHT="dzen2 -h $PANEL_HEIGHT -w $((PANEL_WIDTH - 20 - GAPS)) -x $PANEL_WIDTH -fn $FONT_FAMILY -bg $PANEL_BG -fg $PANEL_TEXT_LIGHT -ta r -title-name dzen_left"
+DZEN_LEFT="dzen2 -h $PANEL_HEIGHT -w $((SCREEN_WIDTH - GAPS)) -x $GAPS -fn $FONT_FAMILY -bg $PANEL_BG -fg $PANEL_TEXT_LIGHT -ta l -title-name dzen_right"
+
+cat $bspwm_fifo | panel_dzen | $DZEN_LEFT &
+cat $sys_fifo | $DZEN_RIGHT &
+
+wait

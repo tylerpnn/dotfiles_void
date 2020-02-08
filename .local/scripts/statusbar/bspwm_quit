@@ -1,0 +1,4 @@
+#!/bin/sh
+
+killall statusbar dzen2 cat status
+bspc quit

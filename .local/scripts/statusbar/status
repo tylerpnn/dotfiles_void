@@ -1,0 +1,42 @@
+#!/bin/sh
+
+. panel_config
+
+Bat() {
+	percent=`acpi -b | awk '{gsub(/,/,""); print $4}'`
+	time=`acpi -b | awk '{print $5}' | sed 's/:[0-9][0-9]$//g'`
+	status=`acpi -b | awk '{gsub(/,/,""); print $3}'`
+
+	if [ $status = "Charging" ]; then
+		status="CHG"
+	else
+		status="BAT"
+	fi
+
+	echo "^fg($PANEL_COLOR)$status: $percent ($time)"
+}
+
+Date() {
+	date=`date +"%a %d %b %H:%M"`
+	echo "^fg($PANEL_COLOR)$date"
+}
+
+Wifi() {
+	interface=`iw dev | grep Interface | awk '{print $2}'`
+	ssid=`iw wlp3s0 info | grep ssid | awk '{print $2}'`
+
+	if [ $interface = "wlp3s0" ]; then
+		network=$ssid
+	else
+		network=""
+	fi
+
+	echo "^fg($PANEL_COLOR)NET: $network ($interface)"
+}
+
+while true; do
+	status=" $(Wifi) ^fg($PANEL_TEXT_LIGHT)| $(Bat) ^fg($PANEL_TEXT_LIGHT)| $(Date) "
+	echo $status
+	#xsetroot -name "$status"
+	sleep 1
+done
