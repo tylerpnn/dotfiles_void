@@ -23,13 +23,9 @@ Date() {
 
 Wifi() {
 	interface=`iw dev | grep Interface | awk '{print $2}'`
-	ssid=`iw wlp3s0 info | grep ssid | awk '{print $2}'`
+	ssid=`iw "$interface" info | grep ssid | awk '{print $2}'`
 
-	if [ $interface = "wlp3s0" ]; then
-		network=$ssid
-	else
-		network=""
-	fi
+	network=$ssid
 
 	echo "NET: $network ($interface)"
 }
