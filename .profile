@@ -14,5 +14,11 @@ export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export ZDOTDIR="$HOME/.config/zsh"
 
 alias ls='ls -N --color=auto'
+alias xi='sudo xbps-install -S'
+alias xr='sudo xbps-remove'
+alias xq='xbps-query'
 
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
+export JAVA_HOME=/opt/java
+export ANDROID_HOME=/opt/android/sdk
+export GRADLE_HOME=/opt/android/gradle
+export PATH=/opt/java/bin:$PATH
