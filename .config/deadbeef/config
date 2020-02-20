@@ -1,4 +1,8 @@
-alsa_soundcard default:CARD=S20
+alsa.buffer 8192
+alsa.period 1024
+alsa.resample 0
+alsa_soundcard default
+ape.write_apev2 1
 artwork.cache.period 48
 artwork.enable_albumartorg 0
 artwork.enable_embedded 1
@@ -8,7 +12,6 @@ artwork.enable_musicbrainz 0
 artwork.enable_wos 0
 artwork.filemask *cover*.jpg;*front*.jpg;*folder*.jpg;*cover*.png;*front*.png;*folder*.png
 artwork.missing_artwork 0
-artwork.nocover_path
 artwork.scale_towards_longer 1
 cli_add_playlist_name Default
 deadbeef_version 1.8.2
@@ -20,11 +23,11 @@ filebrowser.coverart_scale 1
 filebrowser.coverart_size 24
 filebrowser.defaultpath /mnt/storage/Music
 filebrowser.enabled 1
-filebrowser.expanded_rows
+filebrowser.expanded_rows 
 filebrowser.extra_bookmarks $HOME/.config/deadbeef/bookmarks
 filebrowser.fgcolor #000000
 filebrowser.fgcolor_selected #000000
-filebrowser.filter
+filebrowser.filter 
 filebrowser.filter_enabled 1
 filebrowser.font_size 0
 filebrowser.fullsearch_wait 5
@@ -42,8 +45,8 @@ filebrowser.showicons 1
 filebrowser.sidebar_width 220
 filebrowser.sort_treeview 1
 filebrowser.treelines 0
-gtkui.columns.playlist [{"title":"Album Art","id":"8","format":"","sort_format":"","size":"254","align":"0","color_override":"0","color":"#ffeff0f1"},{"title":"","id":"1","format":"","sort_format":"","size":"16","align":"0","color_override":"0","color":"#ff000000"},{"title":"#","id":"-1","format":"%tracknumber%","sort_format":"","size":"27","align":"1","color_override":"0","color":"#ff000000"},{"title":"Title","id":"-1","format":"%title%","sort_format":"","size":"518","align":"0","color_override":"0","color":"#ff000000"},{"title":"Duration","id":"-1","format":"%length%","sort_format":"","size":"50","align":"0","color_override":"0","color":"#ff000000"},{"title":"Bitrate","id":"-1","format":"%bitrate%","sort_format":"","size":"56","align":"0","color_override":"0","color":"#ffeff0f1"},{"title":"Codec","id":"-1","format":"%codec%","sort_format":"","size":"52","align":"0","color_override":"0","color":"#ffeff0f1"}]
-gtkui.layout.0.6.2 vbox expand="0 1" fill="1 1" homogeneous=0 {hbox expand="0 1 0" fill="1 1 1" homogeneous=0 {playtb {} seekbar {} volumebar {} } vsplitter locked=0 ratio=0.995066 pos=0 size2=0 {hsplitter locked=0 ratio=0.309028 pos=0 size2=0 {filebrowser {} vsplitter locked=0 ratio=0.295805 pos=0 size2=0 {hsplitter locked=0 ratio=0.568826 pos=0 size2=0 {selproperties {} vsplitter locked=0 ratio=0.605491 pos=0 size2=0 {coverart {} vsplitter locked=0 ratio=0.640449 pos=0 size2=0 {musical_spectrum {} spectrogram {} } } } playlist hideheaders=0 width=988 {} } } waveform_seekbar {} } }
+gtkui.columns.playlist [{"title":"Album Art","id":"8","format":"","sort_format":"","size":"254","align":"0","color_override":"0","color":"#ffeff0f1"},{"title":"","id":"1","format":"","sort_format":"","size":"25","align":"0","color_override":"0","color":"#ff000000"},{"title":"#","id":"-1","format":"%tracknumber%","sort_format":"","size":"27","align":"1","color_override":"0","color":"#ff000000"},{"title":"Title","id":"-1","format":"%title%","sort_format":"","size":"518","align":"0","color_override":"0","color":"#ff000000"},{"title":"Duration","id":"-1","format":"%length%","sort_format":"","size":"50","align":"0","color_override":"0","color":"#ff000000"},{"title":"Bitrate","id":"-1","format":"%bitrate%","sort_format":"","size":"56","align":"0","color_override":"0","color":"#ffeff0f1"},{"title":"Codec","id":"-1","format":"%codec%","sort_format":"","size":"52","align":"0","color_override":"0","color":"#ffeff0f1"}]
+gtkui.layout.0.6.2 vbox expand="0 1" fill="1 1" homogeneous=0 {hbox expand="0 1 0" fill="1 1 1" homogeneous=0 {playtb {} seekbar {} volumebar {} } vsplitter locked=0 ratio=0.995066 pos=0 size2=0 {hsplitter locked=0 ratio=0.309028 pos=0 size2=0 {filebrowser {} vsplitter locked=0 ratio=0.295805 pos=0 size2=0 {hsplitter locked=0 ratio=0.568826 pos=0 size2=0 {selproperties {} vsplitter locked=0 ratio=0.605491 pos=0 size2=0 {coverart {} vsplitter locked=0 ratio=0.640449 pos=0 size2=0 {musical_spectrum {} spectrogram {} } } } playlist hideheaders=0 width=988 {} } } waveform_seekbar {} } } 
 gtkui.playlist.group_by_tf "%album artist% - ['['%year%']' ]%album%"
 gtkui.statusbar.visible 1
 gtkui.tabscroll 0
@@ -75,11 +78,19 @@ hotkey.key23 "Alt 9" 0 0 playlist9
 hotkey.key24 "Alt 0" 0 0 playlist10
 hotkey.key25 "Shift Ctrl space" 0 1 toggle_pause
 hotkeys_created 1
+logwindow.geometry.h 200
+logwindow.geometry.w 400
+logwindow.geometry.x 409
+logwindow.geometry.y 468
 mainwin.geometry.h 300
 mainwin.geometry.maximized 1
 mainwin.geometry.w 500
 mainwin.geometry.x 40
 mainwin.geometry.y 40
+mp3.id3v1_encoding iso8859-1
+mp3.id3v2_version 3
+mp3.write_id3v1 1
+mp3.write_id3v2 1
 musical_spectrum.alignment 2
 musical_spectrum.amp_max 0
 musical_spectrum.amp_min -60
@@ -139,8 +150,8 @@ playback.loop 0
 playback.order 0
 playback.volume 0.0000000
 playlist.current 0
-playlist.cursor.0 31
-playlist.scroll.0 -31
+playlist.cursor.0 37
+playlist.scroll.0 -37
 playlist.scroll.cursorfollowplayback 1
 playlist.tab.00000 Default
 prefwin.geometry.h 1246
@@ -222,3 +233,4 @@ waveform.render_method 2
 waveform.scroll_enabled 1
 waveform.shade_waveform 0
 waveform.soundcloud_style 0
+wv.write_apev2 1

@@ -1,0 +1,35 @@
+## Soekris 1541
+pcm.soekris1541 {
+  type hw
+  card "S20"
+}
+
+ctl.soekris1541 {
+  type hw
+  card "S20"
+}
+
+# Dmixer
+pcm.dmixer {
+  type plug
+  slave.pcm {
+    type dmix
+    ipc_key 1234
+    slave {
+      pcm "soekris1541"
+    }
+  }
+}
+
+pcm.!default {
+  type plug
+  slave {
+    pcm "dmixer"
+    rate "unchanged"
+  }
+}
+
+ctl.!default {
+  type hw
+  card "S20"
+}
